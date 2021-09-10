@@ -1,9 +1,9 @@
 <script setup>
-import Project from './components/Project.vue'
+import ProjectsList from './components/ProjectsList.vue'
 </script>
 
 <template>
-  <Project/>
+  <ProjectsList/>
 </template>
 
 <style>
@@ -11,7 +11,6 @@ import Project from './components/Project.vue'
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
