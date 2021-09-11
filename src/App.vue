@@ -1,9 +1,5 @@
-<script setup>
-import ProjectsList from './components/ProjectsList.vue'
-</script>
-
 <template>
-  <ProjectsList/>
+  <router-view />
 </template>
 
 <style>
@@ -13,5 +9,7 @@ import ProjectsList from './components/ProjectsList.vue'
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: large;
+  text-align: center;
 }
 </style>
