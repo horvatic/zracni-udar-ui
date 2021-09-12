@@ -12,4 +12,8 @@
   font-size: large;
   text-align: center;
 }
+a {
+  color: rgb(22, 22, 37);
+  text-decoration: none;
+}
 </style>

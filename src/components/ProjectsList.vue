@@ -15,10 +15,8 @@ export default {
     <ul>
       <li v-for="project in projects">
         <p>
-            <router-link :to="{  name: 'project', params: { id: project.id } }">{{ project.name }}</router-link>
-            <br> 
-            <br> 
-            {{ project.description }}
+            <h1><router-link :to="{  name: 'project', params: { id: project.id } }">{{ project.name }}</router-link></h1>
+            <p>{{ project.description }}</p>
         </p>
         <hr>
       </li>
@@ -31,7 +29,7 @@ export default {
     list-style-type: none;
   }
   hr {
-    width:35%;
+    width:25%;
     margin:0 auto;
   }
   a {
