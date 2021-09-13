@@ -79,6 +79,43 @@ const projects = [
           description: 'rwefhj7uj8ik 8  8 k7j7ujuyj 7uj7',
           uri: 'https://diagrams3.horvatic.com'
         }
+      ],
+      gits: [
+        { 
+          id: '9e78b918-31e0-4398-a8ab-d9d5d1dbd543',
+          name: 'Git Repo 1',
+          description: 'note info here: fwefweewfewfwefwe',
+          uri: 'https://github.horvatic.com'
+        },
+        { 
+          id: '38de8262-6b3f-459c-a9dd-d3ba72ec5aaa',
+          name: 'Git Repo 2',
+          description: 'frrfewf f 34ffeef sf wed23',
+          uri: 'https://github2.horvatic.com'
+        },
+        { 
+          id: '52088195-6c7f-411f-a136-0b3c5308cb27',
+          name: 'Git Repo 3',
+          description: 'rwefhj7uj8ik 8  8 k7j7ujuyj 7uj7',
+          uri: 'https://github3.horvatic.com'
+        }
+      ],
+      builds: [
+        {
+          id: '1b6086ae-a5b8-499f-86ce-e59fc3f84194',
+          name: 'Build 1',
+          description: 'note info here: fwefweewfewfwefwe',
+        },
+        {
+          id: '217c4d79-e5a3-4bf2-8beb-4fbd8f556c7e',
+          name: 'Build 2',
+          description: 'wsefdfewi9v  i9 fwei9 0 scdi9 si9few',
+        },
+        {
+          id: '32627097-cc16-4d2e-b84e-3626b0e66021',
+          name: 'Build 3',
+          description: 'gerger  w34 tsd sfewsf se',
+        }
       ]
     },
     { 
@@ -115,6 +152,21 @@ const projects = [
           description: 'tfdg  4t4t fgdrdg4tt h7 h7h7h7h',
           uri: 'https://diagrams4.horvatic.com'
         }
+      ],
+      gits: [
+        { 
+          id: '8227991d-82ea-4cd6-9fd0-3255a12fa951',
+          name: 'Git Repo 4',
+          description: 'note info here: fwefweewfewfwefwe',
+          uri: 'https://github4.horvatic.com'
+        }
+      ],
+      builds: [
+        {
+          id: '3649e08e-2b55-4959-a031-fb26b43f281a',
+          name: 'Build 4',
+          description: 'note info here: fwefweewfewfwefwe',
+        }
       ]
     }
   ]
@@ -141,4 +193,59 @@ export const getYoutubes = (id) => {
 export const getDiagrams = (id) => {
   const project = projects.find(x => x.id === id)
   return project.diagrams;
+}
+
+export const getGits = (id) => {
+  const project = projects.find(x => x.id === id)
+  return project.gits;
+}
+
+export const getBuilds = (id) => {
+  const project = projects.find(x => x.id === id)
+  return project.builds;
+}
+
+export const getEnvironmentsStatus = (projectId, buildId) => {
+  return [
+    {
+      version: "1",
+      environments: [
+        {
+          name: "build",
+          status: "passing",
+          order: 0
+        },
+        {
+          name: "dev",
+          status: "passing",
+          order: 1
+        },
+        {
+          name: "prod",
+          status: "passing",
+          order: 1
+        }
+      ]
+    },
+    {
+      version: "2",
+      environments: [
+        {
+          name: "build",
+          status: "passing",
+          order: 0
+        },
+        {
+          name: "dev",
+          status: "pending",
+          order: 1
+        },
+        {
+          name: "prod",
+          status: "pending",
+          order: 1
+        }
+      ]
+    }
+  ];
 }
