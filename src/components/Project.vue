@@ -1,12 +1,18 @@
-<script setup>
-import { getProjectId } from '../store/projectStore'
+<script>
+  import { getProjectById } from '../store/projectStore'
 
-const props = defineProps({
-  id: String
-})
-
-const project = getProjectId(props.id)
+  export default {
+    props: {
+      id: String
+    },
+    async setup(props) {
+      return {
+        project: await getProjectById(props.id),
+      }
+    }
+  }
 </script>
+
 
 
 <template>
@@ -18,7 +24,7 @@ const project = getProjectId(props.id)
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'blogs', params: { id: id } }">Blogs</router-link>
   &nbsp;|&nbsp;
-  <router-link :to="{  name: 'youtubes', params: { id: id } }">Youtube Videos</router-link>
+  <router-link :to="{  name: 'videos', params: { id: id } }">Videos</router-link>
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'diagrams', params: { id: id } }">Diagrams</router-link>
   <br>

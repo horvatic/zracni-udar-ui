@@ -1,10 +1,10 @@
 <script>
-import { getAllProjects } from '../store/projectStore'
+import { getProjectsMetaData } from '../store/projectStore'
 
 export default {
-  data() {
+  async setup() {
     return {
-     projects: getAllProjects()
+     projects: await getProjectsMetaData()
     }
   }
 }

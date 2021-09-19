@@ -1,5 +1,5 @@
 <script>
-  import { getBuildMetaDatasByProjectId } from '../store/projectStore'
+  import { getVideosByProjectId } from '../store/projectStore'
 
   export default {
     props: {
@@ -7,23 +7,23 @@
     },
     async setup(props) {
       return {
-        builds: await getBuildMetaDatasByProjectId(props.id),
+        videos: await getVideosByProjectId(props.id),
       }
     }
   }
 </script>
 
 <template>
-  <h1>Build / Deployment List</h1>
+  <h1>Video List</h1>
   <ul>
-    <li v-for="build in builds">
-      <router-link :to="{  name: 'build', params: { projectId: id, buildId: build.id } }">{{ build.name }}</router-link>
+    <li v-for="video in videos">
+      {{ video.name }}
       <br>
       <br>
-      {{ build.uri }}
+      {{ video.uri }}
       <br>
       <br>
-      {{ build.description }}
+      {{ video.description }}
       <br>
       <hr>
       <br>

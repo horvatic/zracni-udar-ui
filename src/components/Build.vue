@@ -1,20 +1,26 @@
-<script setup>
-import { getEnvironmentsStatus } from '../store/projectStore'
+<script>
+  import { getBuildsForProject } from '../store/projectStore'
 
-const props = defineProps({
-  projectId: String,
-  buildId: String
-})
-const versions = getEnvironmentsStatus(props.projectId, props.buildId)
+  export default {
+    props: {
+      projectId: String,
+      buildId: String
+    },
+    async setup(props) {
+      return {
+        builds: await getBuildsForProject(props.projectId, props.buildId),
+      }
+    }
+  }
 </script>
 
 <template>
   <h1>Builds</h1>
   <ul>
-    <li v-for="version in versions">
-      Version: {{ version.version }}
+    <li v-for="build in builds">
+      Version: {{ build.version }}
       <br>
-      <div v-for="environment in version.environments">
+      <div v-for="environment in build.environments">
         {{ environment.name }}
         &nbsp;|&nbsp;
         {{ environment.status }}
