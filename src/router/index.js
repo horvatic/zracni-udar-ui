@@ -1,7 +1,7 @@
 import ProjectsList from '../components/ProjectsList.vue'
 import Project from '../components/Project.vue'
 import BlogList from '../components/BlogList.vue'
-import YoutubeList from '../components/YoutubeList.vue'
+import VideoList from '../components/VideoList.vue'
 import DiagramList from '../components/DiagramList.vue'
 import NoteList from '../components/NoteList.vue'
 import GitRepoList from '../components/GitRepoList.vue'
@@ -30,9 +30,9 @@ const router = createRouter({
             props: (route) => ({ id: route.params.id })
         },
         {
-            name: 'youtubes', 
-            path: '/project/:id/youtubes/', 
-            component: YoutubeList,
+            name: 'videos', 
+            path: '/project/:id/videos/', 
+            component: VideoList,
             props: (route) => ({ id: route.params.id })
         },
         {

@@ -1,10 +1,16 @@
-<script setup>
-import { getBlogs } from '../store/projectStore'
+<script>
+  import { getBlogsByProjectId } from '../store/projectStore'
 
-const props = defineProps({
-  id: String
-})
-const blogs = getBlogs(props.id)
+  export default {
+    props: {
+      id: String
+    },
+    async setup(props) {
+      return {
+        blogs: await getBlogsByProjectId(props.id),
+      }
+    }
+  }
 </script>
 
 <template>

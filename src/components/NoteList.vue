@@ -1,11 +1,18 @@
-<script setup>
-import { getNotes } from '../store/projectStore'
+<script>
+  import { getNotesByProjectId } from '../store/projectStore'
 
-const props = defineProps({
-  id: String
-})
-const notes = getNotes(props.id)
+  export default {
+    props: {
+      id: String
+    },
+    async setup(props) {
+      return {
+        notes: await getNotesByProjectId(props.id),
+      }
+    }
+  }
 </script>
+
 
 <template>
   <h1>Note List</h1>

@@ -1,10 +1,16 @@
-<script setup>
-import { getDiagrams } from '../store/projectStore'
+<script>
+  import { getDiagramsByProjectId } from '../store/projectStore'
 
-const props = defineProps({
-  id: String
-})
-const diagrams = getDiagrams(props.id)
+  export default {
+    props: {
+      id: String
+    },
+    async setup(props) {
+      return {
+        diagrams: await getDiagramsByProjectId(props.id),
+      }
+    }
+  }
 </script>
 
 <template>

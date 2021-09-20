@@ -1,23 +1,29 @@
-<script setup>
-import { getGits } from '../store/projectStore'
+<script>
+  import { getGitReposByProjectId } from '../store/projectStore'
 
-const props = defineProps({
-  id: String
-})
-const gits = getGits(props.id)
+  export default {
+    props: {
+      id: String
+    },
+    async setup(props) {
+      return {
+        gitRepos: await getGitReposByProjectId(props.id),
+      }
+    }
+  }
 </script>
 
 <template>
-  <h1>Gits List</h1>
+  <h1>Git Repo List</h1>
   <ul>
-    <li v-for="git in gits">
-      {{ git.name }}
+    <li v-for="repo in gitRepos">
+      {{ repo.name }}
       <br>
       <br>
-      {{ git.uri }}
+      {{ repo.uri }}
       <br>
       <br>
-      {{ git.description }}
+      {{ repo.description }}
       <br>
       <hr>
       <br>
