@@ -38,7 +38,7 @@
   <hr>
   <br>
   <h2>Other</h2>
-  <a href="#">Edit</a>
+  <router-link :to="{  name: 'updateproject', params: {id: id} }">Edit</router-link>
   &nbsp;|&nbsp;
   <a href="#">Delete</a>
   <br>

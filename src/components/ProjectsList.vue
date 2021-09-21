@@ -21,6 +21,7 @@ export default {
         <hr>
       </li>
     </ul>
+    <router-link :to="{  name: 'addproject', params: {} }">Add Project</router-link>
   </div>
 </template>
 

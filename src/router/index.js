@@ -7,6 +7,7 @@ import NoteList from '../components/NoteList.vue'
 import GitRepoList from '../components/GitRepoList.vue'
 import BuildList from '../components/BuildList.vue'
 import Build from '../components/Build.vue'
+import SetProject from '../components/SetProject.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -64,6 +65,18 @@ const router = createRouter({
             path: '/project/:projectId/build/:buildId', 
             component: Build,
             props: (route) => ({ projectId: route.params.projectId, buildId: route.params.buildId })
+        },
+        {
+            name: 'addproject', 
+            path: '/project/addproject', 
+            component: SetProject,
+            props: (route) => ({})
+        },
+        {
+            name: 'updateproject', 
+            path: '/project/updateproject/:id', 
+            component: SetProject,
+            props: (route) => ({ id: route.params.id })
         }
 
     ]
