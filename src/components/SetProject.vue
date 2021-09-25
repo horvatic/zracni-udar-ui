@@ -22,8 +22,6 @@
   }
 </script>
 
-
-
 <template>
   <p>Project Name</p>
   <input v-model="project.name" placeholder="">
@@ -33,6 +31,10 @@
   <br>
   <br>
   <button v-on:click="submit()">Save</button>
-  <router-link :to="{  name: 'projects' }" >Back</router-link>
-
+  <span v-if="project.id !== undefined">
+    <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
+  </span >
+  <span v-else>
+    <router-link :to="{  name: 'projects' }" >Back</router-link>
+  </span >
 </template>

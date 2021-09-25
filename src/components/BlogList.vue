@@ -1,9 +1,15 @@
 <script>
-  import { getBlogsByProjectId } from '../store/projectStore'
+  import { getBlogsByProjectId, deleteBlog } from '../store/projectStore'
 
   export default {
     props: {
       id: String
+    },
+    methods: {
+        removeBlog: async function (projectId, blogId) {
+            await deleteBlog(projectId, blogId);
+            this.$router.go(0);
+        }
     },
     async setup(props) {
       return {
@@ -25,10 +31,17 @@
       <br>
       {{ blog.description }}
       <br>
+      <br>
+      <router-link :to="{  name: 'updateblog', params: { projectId: id, blogId: blog.id } }">Edit</router-link>
+      &nbsp;|&nbsp;
+      <button v-on:click="removeBlog(id, blog.id)">Delete</button>
+      <br>
       <hr>
       <br>
     </li>
   </ul>
+  <router-link :to="{  name: 'addblog', params: { projectId: id } }">Add</router-link>
+  &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
 

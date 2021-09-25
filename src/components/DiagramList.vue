@@ -1,9 +1,15 @@
 <script>
-  import { getDiagramsByProjectId } from '../store/projectStore'
+  import { getDiagramsByProjectId, deleteDiagram } from '../store/projectStore'
 
   export default {
     props: {
       id: String
+    },
+    methods: {
+        removeDiagram: async function (projectId, diagramId) {
+            await deleteDiagram(projectId, diagramId);
+            this.$router.go(0);
+        }
     },
     async setup(props) {
       return {
@@ -25,10 +31,17 @@
       <br>
       {{ diagram.description }}
       <br>
+      <br>
+      <router-link :to="{  name: 'updatediagram', params: { projectId: id, diagramId: diagram.id } }">Edit</router-link>
+      &nbsp;|&nbsp;
+      <button v-on:click="removeDiagram(id, diagram.id)">Delete</button>
+      <br>
       <hr>
       <br>
     </li>
   </ul>
+  <router-link :to="{  name: 'adddiagram', params: { projectId: id } }">Add</router-link>
+  &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
 

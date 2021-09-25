@@ -1,9 +1,15 @@
 <script>
-  import { getProjectById } from '../store/projectStore'
+  import { getProjectById, deleteProject } from '../store/projectStore'
 
   export default {
     props: {
       id: String
+    },
+    methods: {
+        deleteProject: async function (event) {
+            await deleteProject(this.project.id);
+            this.$router.push({ name: 'projects' })
+        }
     },
     async setup(props) {
       return {
@@ -12,8 +18,6 @@
     }
   }
 </script>
-
-
 
 <template>
   <h1>{{ project.name }}</h1>
@@ -40,7 +44,7 @@
   <h2>Other</h2>
   <router-link :to="{  name: 'updateproject', params: {id: id} }">Edit</router-link>
   &nbsp;|&nbsp;
-  <a href="#">Delete</a>
+  <button v-on:click="deleteProject()">Delete</button>
   <br>
   <hr>
   <br>
