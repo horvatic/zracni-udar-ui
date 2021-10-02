@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zusui
+  labels:
+    app: zusui
+spec:
+  selector:
+    matchLabels:
+      app: zusui
+  template:
+    spec:
+      containers:
+      - name: zusui
+        image: horvatic/zracni-udar-ui:${TAG}
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+            name: "zusui-http"

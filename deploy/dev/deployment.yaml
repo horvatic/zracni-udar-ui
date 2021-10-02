@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zusui
+  labels:
+    app: zusui
+spec:
+  revisionHistoryLimit : 1
+  template:
+    metadata:
+      name: zusui
+      labels:
+        app: zusui

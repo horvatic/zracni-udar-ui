@@ -16,143 +16,149 @@ import SetGitRepo from '../components/SetGitRepo.vue';
 import SetBuilds from '../components/SetBuilds.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
+const baseUrl = import.meta.env.BASE_URL;
+
+function buildPath(basePath) {
+  return `${baseUrl}${basePath}`;
+}
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       name: 'projects', 
-      path: '/', 
+      path: buildPath(''), 
       component: ProjectsList 
     },
     {
       name: 'project', 
-      path: '/project/:id', 
+      path: buildPath('project/:id'), 
       component: Project,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'blogs', 
-      path: '/project/:id/blogs/', 
+      path: buildPath('project/:id/blogs/'), 
       component: BlogList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'videos', 
-      path: '/project/:id/videos/', 
+      path: buildPath('project/:id/videos/'), 
       component: VideoList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'diagrams', 
-      path: '/project/:id/diagrams/', 
+      path: buildPath('project/:id/diagrams/'), 
       component: DiagramList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'notes', 
-      path: '/project/:id/notes/', 
+      path: buildPath('project/:id/notes/'), 
       component: NoteList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'gitrepos', 
-      path: '/project/:id/gitrepos/', 
+      path: buildPath('project/:id/gitrepos/'), 
       component: GitRepoList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'builds', 
-      path: '/project/:id/builds/', 
+      path: buildPath('project/:id/builds/'), 
       component: BuildList,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'build', 
-      path: '/project/:projectId/build/:buildId', 
+      path: buildPath('project/:projectId/build/:buildId'), 
       component: Build,
       props: (route) => ({ projectId: route.params.projectId, buildId: route.params.buildId })
     },
     {
       name: 'addproject', 
-      path: '/project/addproject', 
+      path: buildPath('project/addproject'), 
       component: SetProject,
       props: (route) => ({})
     },
     {
       name: 'updateproject', 
-      path: '/project/updateproject/:id', 
+      path: buildPath('project/updateproject/:id'), 
       component: SetProject,
       props: (route) => ({ id: route.params.id })
     },
     {
       name: 'addnote', 
-      path: '/project/updateproject/:projectId/note', 
+      path: buildPath('project/updateproject/:projectId/note'), 
       component: SetNote,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updatenote', 
-      path: '/project/updateproject/:projectId/note/:noteId', 
+      path: buildPath('project/updateproject/:projectId/note/:noteId'), 
       component: SetNote,
       props: (route) => ({ projectId: route.params.projectId, noteId: route.params.noteId })
     },
     {
       name: 'addblog', 
-      path: '/project/updateproject/:projectId/blog', 
+      path: buildPath('project/updateproject/:projectId/blog'), 
       component: SetBlog,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updateblog', 
-      path: '/project/updateproject/:projectId/blog/:blogId', 
+      path: buildPath('project/updateproject/:projectId/blog/:blogId'), 
       component: SetBlog,
       props: (route) => ({ projectId: route.params.projectId, blogId: route.params.blogId })
     },
     {
       name: 'adddiagram', 
-      path: '/project/updateproject/:projectId/diagram', 
+      path: buildPath('project/updateproject/:projectId/diagram'), 
       component: SetDiagram,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updatediagram', 
-      path: '/project/updateproject/:projectId/diagram/:diagramId', 
+      path: buildPath('project/updateproject/:projectId/diagram/:diagramId'), 
       component: SetDiagram,
       props: (route) => ({ projectId: route.params.projectId, diagramId: route.params.diagramId })
     },
     {
       name: 'addvideo', 
-      path: '/project/updateproject/:projectId/addvideo', 
+      path: buildPath('project/updateproject/:projectId/addvideo'), 
       component: SetVideo,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updatevideo', 
-      path: '/project/updateproject/:projectId/video/:videoId', 
+      path: buildPath('project/updateproject/:projectId/video/:videoId'), 
       component: SetVideo,
       props: (route) => ({ projectId: route.params.projectId, videoId: route.params.videoId })
     },
     {
       name: 'addgitrepo', 
-      path: '/project/updateproject/:projectId/addgitrepo', 
+      path: buildPath('project/updateproject/:projectId/addgitrepo'), 
       component: SetGitRepo,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updategitrepo', 
-      path: '/project/updateproject/:projectId/gitrepo/:gitRepoId', 
+      path: buildPath('project/updateproject/:projectId/gitrepo/:gitRepoId'), 
       component: SetGitRepo,
       props: (route) => ({ projectId: route.params.projectId, gitRepoId: route.params.gitRepoId })
     },
     {
       name: 'addbuilds', 
-      path: '/project/updateproject/:projectId/addbuilds', 
+      path: buildPath('project/updateproject/:projectId/addbuilds'), 
       component: SetBuilds,
       props: (route) => ({ projectId: route.params.projectId })
     },
     {
       name: 'updatebuilds', 
-      path: '/project/updateproject/:projectId/builds/:buildId', 
+      path: buildPath('project/updateproject/:projectId/builds/:buildId'), 
       component: SetBuilds,
       props: (route) => ({ projectId: route.params.projectId, buildId: route.params.buildId })
     }
