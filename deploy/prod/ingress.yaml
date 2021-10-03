@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zusui-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /prod/zusui
+        pathType: Prefix
+        backend:
+          service:
+            name: zusui
+            port:
+              number: 80
