@@ -26,7 +26,7 @@
       {{ video.name }}
       <br>
       <br>
-      {{ video.uri }}
+      <a :href="`${video.uri}`" target="_blank" > {{ video.uri }} </a>
       <br>
       <br>
       {{ video.description }}
@@ -34,7 +34,7 @@
       <br>
       <router-link :to="{  name: 'updatevideo', params: { projectId: id, videoId: video.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeVideo(id, video.id)">Delete</button>
+      <a href="#" v-on:click="removeVideo(id, video.id)">Delete</a>
       <br>
       <hr>
       <br>
@@ -46,9 +46,6 @@
 </template>
 
 <style scoped>
-  ul {
-    list-style-type: none;
-  }
   hr {
     width:25%;
     margin:0 auto;

@@ -44,7 +44,7 @@
   <h2>Other</h2>
   <router-link :to="{  name: 'updateproject', params: {id: id} }">Edit</router-link>
   &nbsp;|&nbsp;
-  <button v-on:click="deleteProject()">Delete</button>
+  <a href="#" v-on:click="deleteProject()">Delete</a>
   <br>
   <hr>
   <br>

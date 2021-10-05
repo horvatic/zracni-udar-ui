@@ -28,14 +28,16 @@
   <p>Name</p>
   <input v-model="gitRepo.name" placeholder="">
 
-  <p>Description</p>
-  <input v-model="gitRepo.description" placeholder="">
-
   <p>Uri</p>
   <input v-model="gitRepo.uri" placeholder="">
+
+  <p>Description</p>
+  <textarea v-model="gitRepo.description" placeholder=""></textarea>
+
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <router-link :to="{ name: 'gitrepos', params: { id: gitRepo.project_id } }" >Back</router-link>
 
 </template>

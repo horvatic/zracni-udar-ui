@@ -28,14 +28,15 @@
   <p>Name</p>
   <input v-model="video.name" placeholder="">
 
-  <p>Description</p>
-  <input v-model="video.description" placeholder="">
-
   <p>Uri</p>
   <input v-model="video.uri" placeholder="">
+
+  <p>Description</p>
+  <textarea v-model="video.description" placeholder=""></textarea>
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <router-link :to="{ name: 'videos', params: { id: video.project_id } }" >Back</router-link>
 
 </template>

@@ -26,7 +26,7 @@
       <router-link :to="{  name: 'build', params: { projectId: id, buildId: build.id } }">{{ build.name }}</router-link>
       <br>
       <br>
-      {{ build.uri }}
+      <a :href="`${build.uri}`" target="_blank" > {{ build.uri }} </a>
       <br>
       <br>
       {{ build.description }}
@@ -34,7 +34,7 @@
       <br>
       <router-link :to="{  name: 'updatebuilds', params: { projectId: id, buildId: build.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeBuild(id, build.id)">Delete</button>
+      <a href="#" v-on:click="removeBuild(id, build.id)">Delete</a>
       <br>
       <hr>
       <br>
@@ -46,9 +46,6 @@
 </template>
 
 <style scoped>
-  ul {
-    list-style-type: none;
-  }
   hr {
     width:25%;
     margin:0 auto;

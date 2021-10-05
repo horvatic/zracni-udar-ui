@@ -27,10 +27,11 @@
   <input v-model="project.name" placeholder="">
 
   <p>Project Description</p>
-  <input v-model="project.description" placeholder="">
+  <textarea v-model="project.description" placeholder=""></textarea>
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <span v-if="project.id !== undefined">
     <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
   </span >

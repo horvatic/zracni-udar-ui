@@ -28,14 +28,16 @@
   <p>Name</p>
   <input v-model="diagram.name" placeholder="">
 
-  <p>Description</p>
-  <input v-model="diagram.description" placeholder="">
-
   <p>Uri</p>
   <input v-model="diagram.uri" placeholder="">
+
+  <p>Description</p>
+  <textarea v-model="diagram.description" placeholder=""></textarea>
+
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <router-link :to="{ name: 'diagrams', params: { id: diagram.project_id } }" >Back</router-link>
 
 </template>

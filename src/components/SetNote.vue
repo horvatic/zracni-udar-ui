@@ -28,10 +28,10 @@
   <input v-model="note.name" placeholder="">
 
   <p>Note</p>
-  <input v-model="note.note" placeholder="">
+  <textarea v-model="note.note" placeholder=""></textarea>
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <router-link :to="{ name: 'notes', params: { id: note.project_id } }" >Back</router-link>
-
 </template>

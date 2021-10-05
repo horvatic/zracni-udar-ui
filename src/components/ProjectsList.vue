@@ -21,14 +21,12 @@ export default {
         <hr>
       </li>
     </ul>
+    <br>
     <router-link :to="{  name: 'addproject', params: {} }">Add Project</router-link>
   </div>
 </template>
 
 <style scoped>
-  ul {
-    list-style-type: none;
-  }
   hr {
     width:25%;
     margin:0 auto;
