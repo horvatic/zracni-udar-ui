@@ -8,7 +8,11 @@
     methods: {
         removeGitRepo: async function (projectId, gitRepoId) {
             await deleteGitRepo(projectId, gitRepoId);
-            this.$router.go(0);
+            const index = this.gitRepos.findIndex(x => x.id === gitRepoId)
+            if (index > -1) {
+              this.gitRepos.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {

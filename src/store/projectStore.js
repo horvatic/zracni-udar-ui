@@ -85,7 +85,7 @@ export const setBlog = async (blog, projectId, blogId) => {
   if(blogId) {
     await axios.patch(buildRoute(`project/${projectId}/blogs/${blogId}`), blog);
   } else {
-    await axios.post(buildRoute(`project/${projectId}/blogs`, blog));
+    await axios.post(buildRoute(`project/${projectId}/blogs`), blog);
   }
 };
 
@@ -113,7 +113,7 @@ export const setVideo = async (video, projectId, videoId) => {
   if(videoId) {
     await axios.patch(buildRoute(`project/${projectId}/videos/${videoId}`), video);
   } else {
-    await axios.post(buildRoute(`project/${projectId}/videos`, video));
+    await axios.post(buildRoute(`project/${projectId}/videos`), video);
   }
 };
 

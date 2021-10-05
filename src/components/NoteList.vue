@@ -8,7 +8,11 @@
     methods: {
         removeNote: async function (projectId, noteId) {
             await deleteNote(projectId, noteId);
-            this.$router.go(0);
+            const index = this.notes.findIndex(x => x.id === noteId)
+            if (index > -1) {
+              this.notes.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {
