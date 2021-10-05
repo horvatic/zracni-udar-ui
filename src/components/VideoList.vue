@@ -8,7 +8,11 @@
     methods: {
         removeVideo: async function (projectId, videoId) {
             await deleteVideo(projectId, videoId);
-            this.$router.go(0);
+            const index = this.videos.findIndex(x => x.id === videoId)
+            if (index > -1) {
+              this.videos.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {

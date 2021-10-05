@@ -8,7 +8,11 @@
     methods: {
         removeBuild: async function (projectId, buildId) {
             await deleteBuild(projectId, buildId);
-            this.$router.go(0);
+            const index = this.builds.findIndex(x => x.id === buildId)
+            if (index > -1) {
+              this.builds.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {

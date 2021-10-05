@@ -8,7 +8,11 @@
     methods: {
         removeBlog: async function (projectId, blogId) {
             await deleteBlog(projectId, blogId);
-            this.$router.go(0);
+            const index = this.blogs.findIndex(x => x.id === blogId)
+            if (index > -1) {
+              this.blogs.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {

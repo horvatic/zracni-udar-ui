@@ -8,7 +8,11 @@
     methods: {
         removeDiagram: async function (projectId, diagramId) {
             await deleteDiagram(projectId, diagramId);
-            this.$router.go(0);
+            const index = this.diagrams.findIndex(x => x.id === diagramId)
+            if (index > -1) {
+              this.diagrams.splice(index, 1);
+            }
+            this.$forceUpdate()
         }
     },
     async setup(props) {
