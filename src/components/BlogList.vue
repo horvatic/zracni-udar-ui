@@ -26,7 +26,7 @@
       {{ blog.name }}
       <br>
       <br>
-      {{ blog.uri }}
+      <a :href="`${blog.uri}`" target="_blank" > {{ blog.uri }} </a>
       <br>
       <br>
       {{ blog.description }}
@@ -34,7 +34,7 @@
       <br>
       <router-link :to="{  name: 'updateblog', params: { projectId: id, blogId: blog.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeBlog(id, blog.id)">Delete</button>
+      <a href="#" v-on:click="removeBlog(id, blog.id)">Delete</a>
       <br>
       <hr>
       <br>

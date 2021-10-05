@@ -28,14 +28,16 @@
   <p>Name</p>
   <input v-model="blog.name" placeholder="">
 
-  <p>Description</p>
-  <input v-model="blog.description" placeholder="">
-
   <p>Uri</p>
   <input v-model="blog.uri" placeholder="">
+
+  <p>Description</p>
+  <textarea v-model="blog.description" placeholder=""></textarea>
+
   <br>
   <br>
-  <button v-on:click="submit()">Save</button>
+  <a href="#" v-on:click="submit()">Save</a>
+  &nbsp;|&nbsp;
   <router-link :to="{ name: 'blogs', params: { id: blog.project_id } }" >Back</router-link>
 
 </template>

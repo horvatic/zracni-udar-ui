@@ -31,7 +31,7 @@
       <br>
       <router-link :to="{  name: 'updatenote', params: { projectId: id, noteId: note.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeNote(id, note.id)">Delete</button>
+      <a href="#" v-on:click="removeNote(id, note.id)">Delete</a>
       <br>
       <hr>
       <br>

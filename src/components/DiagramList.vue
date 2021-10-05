@@ -26,7 +26,7 @@
       {{ diagram.name }}
       <br>
       <br>
-      {{ diagram.uri }}
+      <a :href="`${diagram.uri}`" target="_blank" > {{ diagram.uri }} </a>
       <br>
       <br>
       {{ diagram.description }}
@@ -34,7 +34,7 @@
       <br>
       <router-link :to="{  name: 'updatediagram', params: { projectId: id, diagramId: diagram.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeDiagram(id, diagram.id)">Delete</button>
+      <a href="#" v-on:click="removeDiagram(id, diagram.id)">Delete</a>
       <br>
       <hr>
       <br>

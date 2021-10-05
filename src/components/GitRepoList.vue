@@ -26,7 +26,7 @@
       {{ repo.name }}
       <br>
       <br>
-      {{ repo.uri }}
+      <a :href="`${repo.uri}`" target="_blank" > {{ repo.uri }} </a>
       <br>
       <br>
       {{ repo.description }}
@@ -34,7 +34,7 @@
       <br>
       <router-link :to="{  name: 'updategitrepo', params: { projectId: id, gitRepoId: repo.id } }">Edit</router-link>
       &nbsp;|&nbsp;
-      <button v-on:click="removeGitRepo(id, repo.id)">Delete</button>
+      <a href="#" v-on:click="removeGitRepo(id, repo.id)">Delete</a>
       <br>
       <hr>
       <br>
