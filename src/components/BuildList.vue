@@ -33,6 +33,12 @@
       <a :href="`${build.uri}`" target="_blank" > {{ build.uri }} </a>
       <br>
       <br>
+      {{ build.repo_owner }}
+      <br>
+      <br>
+      {{ build.repo_name }}
+      <br>
+      <br>
       {{ build.description }}
       <br>
       <br>

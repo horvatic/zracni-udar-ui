@@ -11,7 +11,9 @@
             await setBuild({
                 name: this.build.name,
                 description: this.build.description,
-                uri: this.build.uri
+                uri: this.build.uri,
+                repo_owner: this.build.repo_owner,
+                repo_name: this.build.repo_name
             }, this.build.project_id, this.build.id);
             this.$router.push({ name: 'builds', params: { id: this.build.project_id } })
         }
@@ -30,6 +32,12 @@
 
   <p>Uri</p>
   <input v-model="build.uri" placeholder="">
+
+  <p>Repo Owner</p>
+  <input v-model="build.repo_owner" placeholder="">
+
+  <p>Repo Name</p>
+  <input v-model="build.repo_name" placeholder="">
 
   <p>Description</p>
   <textarea v-model="build.description" placeholder=""></textarea>
