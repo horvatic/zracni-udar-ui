@@ -20,10 +20,10 @@
     <li v-for="build in builds">
       Version: {{ build.version }}
       <br>
-      <div v-for="environment in build.environments">
-        {{ environment.name }}
+      <div v-for="stage in build.stages">
+        {{ stage.name }}
         &nbsp;|&nbsp;
-        {{ environment.status }}
+        {{ stage.status }}
       </div>
       <br>
       <hr>
