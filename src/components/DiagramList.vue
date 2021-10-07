@@ -27,20 +27,18 @@
   <h1>Diagram List</h1>
   <ul>
     <li v-for="diagram in diagrams">
-      {{ diagram.name }}
-      <br>
-      <br>
-      <a :href="`${diagram.uri}`" target="_blank" > {{ diagram.uri }} </a>
-      <br>
-      <br>
-      {{ diagram.description }}
-      <br>
-      <br>
+      <input v-model="diagram.name" class="displaytext" readonly>
+      <hr class="hrdash">
+      <a :href="`${diagram.uri}`" target="_blank" ><input v-model="diagram.uri" class="displayclicktext" readonly></a>
+      <hr class="hrdash">
+      <textarea v-model="diagram.description" class="displaytext" readonly></textarea>
+      <hr class="hrdash">
       <router-link :to="{  name: 'updatediagram', params: { projectId: id, diagramId: diagram.id } }">Edit</router-link>
       &nbsp;|&nbsp;
       <a href="#" v-on:click="removeDiagram(id, diagram.id)">Delete</a>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
@@ -48,13 +46,3 @@
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
-
-<style scoped>
-  ul {
-    list-style-type: none;
-  }
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>

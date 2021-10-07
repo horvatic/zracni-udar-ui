@@ -27,17 +27,16 @@
   <h1>Note List</h1>
   <ul>
     <li v-for="note in notes">
-      {{ note.name }}
-      <br>
-      <br>
-      {{ note.note }}
-      <br>
-      <br>
+      <input v-model="note.name " class="displaytext" readonly>
+      <hr class="hrdash">
+      <input v-model="note.note " class="displaytext" readonly>
+      <hr class="hrdash">
       <router-link :to="{  name: 'updatenote', params: { projectId: id, noteId: note.id } }">Edit</router-link>
       &nbsp;|&nbsp;
       <a href="#" v-on:click="removeNote(id, note.id)">Delete</a>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
@@ -45,13 +44,3 @@
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
-
-<style scoped>
-  ul {
-    list-style-type: none;
-  }
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>

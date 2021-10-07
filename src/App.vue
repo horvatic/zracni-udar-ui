@@ -38,4 +38,70 @@
     margin:0;
     padding:0;
   }
+  .hrdash {
+    border-top: .5px dashed;
+    width:15%;
+  }
+  .hrsoild {
+    width:35%;
+    margin:0 auto;
+  }
+  .displaytext {
+    font-size: 18px;
+    background-color: transparent;
+    text-align: center;
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 100%;
+    font-family:inherit;
+    color: #2c3e50;
+    cursor: default;
+  }
+  .displayclicktext {
+    font-size: 18px;
+    background-color: transparent;
+    text-align: center;
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 100%;
+    font-family:inherit;
+    color: #2c3e50;
+    cursor: pointer;
+  }
+  .displayheader {
+    font-size: 36px; 
+    font-weight: bold; 
+    background-color: transparent;
+    text-align: center;
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 100%;
+    font-family:inherit;
+    color: #2c3e50;
+    cursor: default;
+  }
+  .displayclickheader {
+    font-size: 36px; 
+    font-weight: bold; 
+    background-color: transparent;
+    text-align: center;
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 100%;
+    font-family:inherit;
+    color: #2c3e50;
+    cursor: pointer;
+  }
 </style>

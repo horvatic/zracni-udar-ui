@@ -15,10 +15,12 @@ export default {
     <ul>
       <li v-for="project in projects">
         <p>
-            <h1><router-link :to="{  name: 'project', params: { id: project.id } }">{{ project.name }}</router-link></h1>
-            <p>{{ project.description }}</p>
+            <router-link :to="{  name: 'project', params: { id: project.id } }">
+              <input v-model=" project.name " class="displayclickheader" readonly>
+            </router-link>
+            <textarea v-model="project.description" class="displaytext" readonly></textarea>
         </p>
-        <hr>
+        <hr class="hrsoild">
       </li>
     </ul>
     <br>
