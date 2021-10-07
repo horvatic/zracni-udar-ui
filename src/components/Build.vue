@@ -18,27 +18,18 @@
   <h1>Builds</h1>
   <ul>
     <li v-for="build in builds">
-      Version: {{ build.version }}
-      <br>
+      <input v-model="build.version" class="displaytext" readonly>
+      <hr class="hrdash">
       <div v-for="stage in build.stages">
         {{ stage.name }}
         &nbsp;|&nbsp;
         {{ stage.status }}
       </div>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
   <router-link :to="{  name: 'builds', params: { id: projectId } }">Back</router-link>
 </template>
-
-<style scoped>
-  ul {
-    list-style-type: none;
-  }
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>

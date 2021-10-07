@@ -27,20 +27,18 @@
   <h1>Video List</h1>
   <ul>
     <li v-for="video in videos">
-      {{ video.name }}
-      <br>
-      <br>
-      <a :href="`${video.uri}`" target="_blank" > {{ video.uri }} </a>
-      <br>
-      <br>
-      {{ video.description }}
-      <br>
-      <br>
+      <input v-model="video.name" class="displaytext" readonly>
+      <hr class="hrdash">
+      <a :href="`${video.uri}`" target="_blank" ><input v-model="video.uri" class="displayclicktext" readonly></a>
+      <hr class="hrdash">
+      <textarea v-model="video.description" class="displaytext" readonly></textarea>
+      <hr class="hrdash">
       <router-link :to="{  name: 'updatevideo', params: { projectId: id, videoId: video.id } }">Edit</router-link>
       &nbsp;|&nbsp;
       <a href="#" v-on:click="removeVideo(id, video.id)">Delete</a>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
@@ -48,10 +46,3 @@
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
-
-<style scoped>
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>

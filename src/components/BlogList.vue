@@ -27,20 +27,18 @@
   <h1>Blogs List</h1>
   <ul>
     <li v-for="blog in blogs">
-      {{ blog.name }}
-      <br>
-      <br>
-      <a :href="`${blog.uri}`" target="_blank" > {{ blog.uri }} </a>
-      <br>
-      <br>
-      {{ blog.description }}
-      <br>
-      <br>
+      <input v-model="blog.name" class="displaytext" readonly>
+      <hr class="hrdash">
+      <a :href="`${blog.uri}`" target="_blank" > <input v-model="blog.uri" class="displayclicktext" readonly></a>
+      <hr class="hrdash">
+      <textarea v-model="blog.description" class="displaytext" readonly></textarea>
+      <hr class="hrdash">
       <router-link :to="{  name: 'updateblog', params: { projectId: id, blogId: blog.id } }">Edit</router-link>
       &nbsp;|&nbsp;
       <a href="#" v-on:click="removeBlog(id, blog.id)">Delete</a>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
@@ -48,13 +46,3 @@
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
-
-<style scoped>
-  ul {
-    list-style-type: none;
-  }
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>

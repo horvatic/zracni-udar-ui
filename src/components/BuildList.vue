@@ -27,26 +27,22 @@
   <h1>Build / Deployment List</h1>
   <ul>
     <li v-for="build in builds">
-      <router-link :to="{  name: 'build', params: { projectId: id, buildId: build.id } }">{{ build.name }}</router-link>
-      <br>
-      <br>
-      <a :href="`${build.uri}`" target="_blank" > {{ build.uri }} </a>
-      <br>
-      <br>
-      {{ build.repo_owner }}
-      <br>
-      <br>
-      {{ build.repo_name }}
-      <br>
-      <br>
-      {{ build.description }}
-      <br>
-      <br>
+      <router-link :to="{  name: 'build', params: { projectId: id, buildId: build.id } }"><input v-model="build.name" class="displayclicktext" readonly></router-link>
+      <hr class="hrdash">
+      <a :href="`${build.uri}`" target="_blank" ><input v-model="build.uri" class="displayclicktext" readonly></a>
+      <hr class="hrdash">
+      <input v-model="build.repo_owner" class="displaytext" readonly>
+      <hr class="hrdash">
+      <input v-model="build.repo_name" class="displaytext" readonly>
+      <hr class="hrdash">
+      <textarea v-model="build.description" class="displaytext" readonly></textarea>
+      <hr class="hrdash">
       <router-link :to="{  name: 'updatebuilds', params: { projectId: id, buildId: build.id } }">Edit</router-link>
       &nbsp;|&nbsp;
       <a href="#" v-on:click="removeBuild(id, build.id)">Delete</a>
       <br>
-      <hr>
+      <br>
+      <hr class="hrsoild">
       <br>
     </li>
   </ul>
@@ -54,10 +50,3 @@
   &nbsp;|&nbsp;
   <router-link :to="{  name: 'project', params: { id: id } }">Back</router-link>
 </template>
-
-<style scoped>
-  hr {
-    width:25%;
-    margin:0 auto;
-  }
-</style>
