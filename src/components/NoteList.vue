@@ -29,7 +29,7 @@
     <li v-for="note in notes">
       <input v-model="note.name " class="displaytext" readonly>
       <hr class="hrdash">
-      <input v-model="note.note " class="displaytext" readonly>
+      <textarea v-model="note.note" class="displaytext" readonly></textarea>
       <hr class="hrdash">
       <router-link :to="{  name: 'updatenote', params: { projectId: id, noteId: note.id } }">Edit</router-link>
       &nbsp;|&nbsp;
