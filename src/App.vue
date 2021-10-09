@@ -1,4 +1,9 @@
 <template>
+  <nav class="navbar navbar-dark bg-dark">
+    <div style="margin: 15px;">
+      <router-link :to="{  name: 'projects' }" class="navbar-brand">Zracni Udar</router-link>
+    </div>
+  </nav>
   <suspense>
     <template #default>
       <router-view />
@@ -12,39 +17,15 @@
 </template>
 
 <style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-    margin-top: 60px;
-    font-size: large;
-    text-align: center;
+  .row {
+    display: flex;
+    flex-wrap: wrap;
   }
-  a {
-    color: rgb(22, 22, 37);
-    text-decoration: none;
+  .row > div[class*='col-'] {
+    display: flex;
   }
-  input {
-    width: 50%;
-  }
-  textarea {
-    width: 50%;
-    height: 10em;
-  }
-  ul,li {
-    list-style-type: none;
-    list-style-position:inside;
-    margin:0;
-    padding:0;
-  }
-  .hrdash {
-    border-top: .5px dashed;
-    width:15%;
-  }
-  .hrsoild {
-    width:35%;
-    margin:0 auto;
+  .card {
+    margin-bottom: 40px;
   }
   .displaytext {
     font-size: 18px;

@@ -24,14 +24,34 @@
 </script>
 
 <template>
-  <p>Name</p>
-  <input v-model="note.name" placeholder="">
-
-  <p>Note</p>
-  <textarea v-model="note.note" placeholder=""></textarea>
-  <br>
-  <br>
-  <a href="#" v-on:click="submit()">Save</a>
-  &nbsp;|&nbsp;
-  <router-link :to="{ name: 'notes', params: { id: note.project_id } }" >Back</router-link>
+  <div class="container-fluid" style="font-size: large;">
+    <div style="text-align: center;">
+      <br>
+      <p>Name</p>
+      <input v-model="note.name" placeholder="">
+      <br>
+      <br>
+      <p>Note</p>
+      <textarea v-model="note.note" placeholder=""></textarea>
+      <br>
+      <br>
+      <a href="#" v-on:click="submit()">Save</a>
+      &nbsp;|&nbsp;
+      <router-link :to="{ name: 'notes', params: { id: note.project_id } }" >Back</router-link>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+  a {
+    color: rgb(22, 22, 37);
+    text-decoration: none;
+  }
+  input {
+    width: 50%;
+  }
+  textarea {
+    width: 50%;
+    height: 10em;
+  }
+</style>
