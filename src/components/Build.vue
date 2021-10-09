@@ -15,21 +15,36 @@
 </script>
 
 <template>
-  <h1>Builds</h1>
-  <ul>
-    <li v-for="build in builds">
+  <div class="container" style="font-size: large;">
+    <br>
+    <h1 style="text-align: center;">Builds</h1>
+    <br>
+    <div class="row justify-content-md-center" v-for="build in builds">
       <input v-model="build.version" class="displaytext" readonly>
       <hr class="hrdash">
-      <div v-for="stage in build.stages">
-        {{ stage.name }}
-        &nbsp;|&nbsp;
-        {{ stage.status }}
+      <div class="col-md-auto" v-for="stage in build.stages">
+        <div class="card" style="width: 36rem;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <input v-model="stage.name" class="displaytext" readonly>
+            </h5>
+            <hr>
+            <p class="card-text">
+              <input v-model="stage.status" class="displaytext" readonly>
+            </p>
+          </div>
+        </div>
       </div>
-      <br>
-      <br>
-      <hr class="hrsoild">
-      <br>
-    </li>
-  </ul>
-  <router-link :to="{  name: 'builds', params: { id: projectId } }">Back</router-link>
+    </div>
+    <div style="text-align: center;">
+        <router-link :to="{  name: 'builds', params: { id: projectId } }">Back</router-link>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+  a {
+    color: rgb(22, 22, 37);
+    text-decoration: none;
+  }
+</style>
