@@ -36,10 +36,12 @@
       <br>
       <hr class="hrsoild">
       <br>
-      <h2>Git / Builds</h2>
+      <h2>Git / Builds / Services</h2>
       <router-link :to="{  name: 'gitrepos', params: { id: id } }">Git Repos</router-link>
       &nbsp;|&nbsp;
       <router-link :to="{  name: 'builds', params: { id: id } }">Builds / Deployments</router-link>
+      &nbsp;|&nbsp;
+      <router-link :to="{  name: 'services', params: { id: id } }">Services</router-link>
       <br>
       <hr class="hrsoild">
       <br>
