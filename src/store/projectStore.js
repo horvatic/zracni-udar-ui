@@ -2,6 +2,12 @@ import axios from 'axios';
 import { getProjectServerHost, getNamespace } from '../config/projectConfig';
 const isLocal = import.meta.env.VITE_LOCAL;
 
+export const healthCheckStatus = {
+  HEALTHY : 'healthy',
+  UNHEALTHY: 'unhealthy',
+  UNKNOWN: 'unknown',
+};
+
 function buildRoute(baseRoute) {
   if(isLocal) {
     return `http://${getProjectServerHost()}/${baseRoute}`;
@@ -210,3 +216,52 @@ export const deleteBuild = async (projectId, buildId) => {
   await axios.delete(buildRoute(`project/${projectId}/buildmetadatas/${buildId}`));
 };
 
+//Service
+
+export const getServicesByProjectId = async (id) => {
+  const res = await axios.get(buildRoute(`project/${id}/services`));
+  return res.data;
+};
+
+export const getService = async (projectId, serviceId) => {
+  if(projectId && serviceId) {
+    const res = await axios.get(buildRoute(`project/${projectId}/services/${serviceId}`));
+    return res.data;
+  } else {
+    return { project_id: projectId };
+  }
+};
+
+export const setService = async (service, projectId, serviceId) => {
+  if(serviceId) {
+    await axios.patch(buildRoute(`project/${projectId}/services/${serviceId}`), service);
+  } else {
+    await axios.post(buildRoute(`project/${projectId}/services`), service);
+  }
+};
+
+export const deleteService = async (projectId, serviceId) => {
+  await axios.delete(buildRoute(`project/${projectId}/services/${serviceId}`));
+};
+
+export const getServiceStats = async (projectId, serviceId) => {
+  const service = await getService(projectId, serviceId);
+  if(service.health_uri) {
+    const res = await axios.get(service.health_uri);
+    if(res.data.status === 'OK') {
+      return {
+        service: service,
+        heatlh: healthCheckStatus.HEALTHY
+      };
+    } else {
+      return {
+        service: service,
+        heatlh: healthCheckStatus.UNHEALTHY
+      };
+    }
+  }
+  return {
+    service: service,
+    heatlh: healthCheckStatus.UNKNOWN
+  };
+};

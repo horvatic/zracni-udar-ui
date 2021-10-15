@@ -14,6 +14,9 @@ import SetDiagram from '../components/SetDiagram.vue';
 import SetVideo from '../components/SetVideo.vue';
 import SetGitRepo from '../components/SetGitRepo.vue';
 import SetBuilds from '../components/SetBuilds.vue';
+import ServiceList from '../components/ServiceList.vue';
+import SetService from '../components/SetService.vue';
+import Service from '../components/Service.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -161,7 +164,31 @@ const router = createRouter({
       path: buildPath('project/updateproject/:projectId/builds/:buildId'), 
       component: SetBuilds,
       props: (route) => ({ projectId: route.params.projectId, buildId: route.params.buildId })
-    }
+    },
+    {
+      name: 'services', 
+      path: buildPath('project/:id/services/'), 
+      component: ServiceList,
+      props: (route) => ({ id: route.params.id })
+    },
+    {
+      name: 'addservice', 
+      path: buildPath('project/updateproject/:projectId/service'), 
+      component: SetService,
+      props: (route) => ({ projectId: route.params.projectId })
+    },
+    {
+      name: 'updateservice', 
+      path: buildPath('project/updateproject/:projectId/service/:serviceId'), 
+      component: SetService,
+      props: (route) => ({ projectId: route.params.projectId, serviceId: route.params.serviceId })
+    },    
+    {
+      name: 'service', 
+      path: buildPath('project/:projectId/service/:serviceId'), 
+      component: Service,
+      props: (route) => ({ projectId: route.params.projectId, serviceId: route.params.serviceId })
+    },
   ]
 });
 
