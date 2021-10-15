@@ -247,8 +247,16 @@ export const deleteService = async (projectId, serviceId) => {
 export const getServiceStats = async (projectId, serviceId) => {
   const service = await getService(projectId, serviceId);
   if(service.health_uri) {
-    const res = await axios.get(service.health_uri);
-    if(res.data.status === 'OK') {
+    var res;
+    try {
+      res = await axios.get(service.health_uri);
+    } catch {
+      return {
+        service: service,
+        heatlh: healthCheckStatus.UNKNOWN
+      };
+    }
+    if(res && res.data.status === 'OK') {
       return {
         service: service,
         heatlh: healthCheckStatus.HEALTHY
