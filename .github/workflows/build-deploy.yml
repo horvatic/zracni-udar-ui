@@ -32,7 +32,9 @@ jobs:
          cat tempConfig > src/config/projectConfig.js
          envsubst < vite.config.js.template > tempViteConfig
          cat tempViteConfig > vite.config.js
-         rm tempViteConfig tempConfig
+         envsubst '$APP_PUBLIC_PATH' < nginx.conf > tempNginxConf
+         cat tempNginxConf > nginx.conf
+         rm tempViteConfig tempConfig tempNginxConf
     
     - name: Set SHA
       id: vars
@@ -110,7 +112,9 @@ jobs:
          cat tempConfig > src/config/projectConfig.js
          envsubst < vite.config.js.template > tempViteConfig
          cat tempViteConfig > vite.config.js
-         rm tempViteConfig tempConfig
+         envsubst '$APP_PUBLIC_PATH' < nginx.conf > tempNginxConf
+         cat tempNginxConf > nginx.conf
+         rm tempViteConfig tempConfig tempNginxConf
     
     - name: Set SHA
       id: vars
