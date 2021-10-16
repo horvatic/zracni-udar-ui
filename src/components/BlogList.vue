@@ -23,7 +23,7 @@
   }
 </script>
 
-<template>
+<template #default>
   <div class="container" style="font-size: large;">
     <br>
     <h1 style="text-align: center;">Blogs</h1>
