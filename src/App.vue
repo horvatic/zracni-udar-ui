@@ -4,19 +4,29 @@
       <router-link :to="{  name: 'projects' }" class="navbar-brand">Zracni Udar</router-link>
     </div>
   </nav>
-  <suspense>
-    <template #default>
-      <router-view />
+  <router-view v-slot="{ Component }">
+    <template v-if="Component">
+      <suspense timeout=0>
+        <component :is="Component"></component>
+        <template #fallback>
+          <div class="centered">
+            <div class="spinner-border" style="width: 8rem; height: 8rem;" role="status">
+              <span></span>
+            </div>
+          </div>
+        </template>
+      </suspense>
     </template>
-    <template #fallback>
-      <div>
-        Loading...
-      </div>
-    </template>
-  </suspense>
+  </router-view>
 </template>
 
 <style>
+  .centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .row {
     display: flex;
     flex-wrap: wrap;
