@@ -244,32 +244,31 @@ export const deleteService = async (projectId, serviceId) => {
   await axios.delete(buildRoute(`project/${projectId}/services/${serviceId}`));
 };
 
-export const getServiceStats = async (projectId, serviceId) => {
-  const service = await getService(projectId, serviceId);
-  if(service.health_uri) {
+export const getServiceHealth = async (healthUri) => {
+  if(healthUri) {
     var res;
     try {
-      res = await axios.get(service.health_uri);
+      res = await axios.get(healthUri);
     } catch {
       return {
-        service: service,
-        heatlh: healthCheckStatus.UNKNOWN
+        uri: healthUri,
+        heatlh: healthCheckStatus.UNHEALTHY
       };
     }
     if(res && res.data.status === 'OK') {
       return {
-        service: service,
+        uri: healthUri,
         heatlh: healthCheckStatus.HEALTHY
       };
     } else {
       return {
-        service: service,
+        uri: healthUri,
         heatlh: healthCheckStatus.UNHEALTHY
       };
     }
   }
   return {
-    service: service,
+    uri: healthUri,
     heatlh: healthCheckStatus.UNKNOWN
   };
 };
