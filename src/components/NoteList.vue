@@ -32,11 +32,13 @@
       <div class="col-md-auto" v-for="note in notes">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Name:</span>
             <h5 class="card-title">
               <input v-model="note.name " class="displaytext" readonly>
             </h5>
             <hr>
             <p class="card-text">
+              <span>Note:</span>
               <textarea v-model="note.note" class="displaytext" readonly></textarea>
               <hr>
               <div style="text-align: center;">

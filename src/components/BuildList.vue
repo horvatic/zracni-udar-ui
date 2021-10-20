@@ -32,17 +32,22 @@
       <div class="col-md-auto" v-for="build in builds">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Name:</span>
             <h5 class="card-title">
               <router-link :to="{  name: 'build', params: { projectId: id, buildId: build.id } }"><input v-model="build.name" class="displayclicktext" readonly></router-link>
             </h5>
             <hr>
             <p class="card-text">
+              <span>Uri</span>
               <a :href="`${build.uri}`" target="_blank" ><input v-model="build.uri" class="displayclicktext" readonly></a>
               <hr>
+              <span>Repo Owner:</span>
               <input v-model="build.repo_owner" class="displaytext" readonly>
               <hr>
+              <span>Repo Name:</span>
               <input v-model="build.repo_name" class="displaytext" readonly>
               <hr>
+              <span>Description:</span>
               <textarea v-model="build.description" class="displaytext" readonly></textarea>
               <hr>
               <div style="text-align: center;">

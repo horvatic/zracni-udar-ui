@@ -30,14 +30,17 @@
     <div style="text-align: center; font-size: large;">
       <input v-model="service.name" class="displayheader" readonly>
       <hr class="hrsoild">
+      <span>Uri:</span>
       <a :href="`${service.uri}`" target="_blank" >
         <input v-model="service.uri" class="displayclicktext" readonly>
       </a>
       <hr class="hrsoild">
+      <span>Health Endpoint:</span>
       <a :href="`${service.health_uri}`" target="_blank" >
         <input v-model="service.health_uri" class="displayclicktext" readonly>
       </a>
       <hr class="hrsoild">
+      <span>Service Health:</span>
       <suspense>
         <template #default>
           <ServiceHealth :healthUri="service.health_uri" />
@@ -49,6 +52,7 @@
         </template>
       </suspense>
       <hr class="hrsoild">
+      <span>Description:</span>
       <textarea v-model="service.description" class="displaytext" readonly></textarea>
       <hr class="hrsoild">
       <div style="text-align: center;">

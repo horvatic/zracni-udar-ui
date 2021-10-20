@@ -32,15 +32,18 @@
       <div class="col-md-auto" v-for="blog in blogs">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Name:</span>
             <h5 class="card-title">
               <input v-model="blog.name" class="displaytext" readonly>
             </h5>
             <hr>
             <p class="card-text">
+              <span>Uri:</span>
               <a :href="`${blog.uri}`" target="_blank" >
                 <input v-model="blog.uri" class="displayclicktext" readonly>
               </a>
               <hr>
+              <span>Description:</span>
               <textarea v-model="blog.description" class="displaytext" readonly></textarea>
               <hr>
               <div style="text-align: center;">

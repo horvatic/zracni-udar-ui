@@ -20,16 +20,18 @@
     <h1 style="text-align: center;">Builds</h1>
     <br>
     <div class="row justify-content-md-center" v-for="build in builds">
-      <input v-model="build.version" class="displaytext" readonly>
+      <span class="displaytext">Version:</span><input v-model="build.version" class="displaytext" readonly>
       <hr class="hrdash">
       <div class="col-md-auto" v-for="stage in build.stages">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Stage Name:</span>
             <h5 class="card-title">
               <input v-model="stage.name" class="displaytext" readonly>
             </h5>
             <hr>
             <p class="card-text">
+              <span>Stage Status:</span>
               <input v-model="stage.status" class="displaytext" readonly>
             </p>
           </div>
