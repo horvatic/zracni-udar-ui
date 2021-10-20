@@ -1,7 +1,11 @@
 <script>
-  import { deleteService, getServiceStats } from '../store/projectStore'
+  import { deleteService, getService } from '../store/projectStore'
+  import ServiceHealth from './ServiceHealth.vue'
 
   export default {
+    components: {
+		  ServiceHealth
+	  },
     props: {
       projectId: String,
       serviceId: String
@@ -14,7 +18,7 @@
     },
     async setup(props) {
       return {
-        serviceStats: await getServiceStats(props.projectId, props.serviceId),
+        service: await getService(props.projectId, props.serviceId),
       }
     }
   }
@@ -24,26 +28,28 @@
 
   <div class="container">
     <div style="text-align: center; font-size: large;">
-      <input v-model="serviceStats.service.name" class="displayheader" readonly>
+      <input v-model="service.name" class="displayheader" readonly>
       <hr class="hrsoild">
-      <a :href="`${serviceStats.service.uri}`" target="_blank" >
-        <input v-model="serviceStats.service.uri" class="displayclicktext" readonly>
+      <a :href="`${service.uri}`" target="_blank" >
+        <input v-model="service.uri" class="displayclicktext" readonly>
       </a>
       <hr class="hrsoild">
-      <a :href="`${serviceStats.service.health_uri}`" target="_blank" >
-        <input v-model="serviceStats.service.health_uri" class="displayclicktext" readonly>
-        <div v-if="serviceStats.heatlh === 'healthy'">
-          <span class="displayclicktext">HEALTHY</span>
-        </div>
-        <div v-else-if="serviceStats.heatlh === 'unhealthy'">
-          <span class="displayclicktext">UNHEALTHY</span>
-        </div>
-        <div v-else-if="serviceStats.heatlh === 'unknown'">
-          <span class="displayclicktext">UNKNOWN</span>
-        </div>
+      <a :href="`${service.health_uri}`" target="_blank" >
+        <input v-model="service.health_uri" class="displayclicktext" readonly>
       </a>
       <hr class="hrsoild">
-      <textarea v-model="serviceStats.service.description" class="displaytext" readonly></textarea>
+      <suspense>
+        <template #default>
+          <ServiceHealth :healthUri="service.health_uri" />
+        </template>
+        <template #fallback>
+          <div>
+            Testing...
+          </div>
+        </template>
+      </suspense>
+      <hr class="hrsoild">
+      <textarea v-model="service.description" class="displaytext" readonly></textarea>
       <hr class="hrsoild">
       <div style="text-align: center;">
         <router-link :to="{  name: 'updateservice', params: { projectId: projectId, serviceId: serviceId } }">Edit</router-link>
