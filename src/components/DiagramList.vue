@@ -32,13 +32,16 @@
       <div class="col-md-auto" v-for="diagram in diagrams">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Name:</span>
             <h5 class="card-title">
               <input v-model="diagram.name" class="displaytext" readonly>
             </h5>
             <hr>
             <p class="card-text">
+              <span>Uri:</span>
               <a :href="`${diagram.uri}`" target="_blank" ><input v-model="diagram.uri" class="displayclicktext" readonly></a>
               <hr>
+              <span>Description:</span>
               <textarea v-model="diagram.description" class="displaytext" readonly></textarea>
               <hr>
               <div style="text-align: center;">

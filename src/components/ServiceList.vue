@@ -32,6 +32,7 @@
       <div class="col-md-auto" v-for="service in services">
         <div class="card" style="width: 36rem;">
           <div class="card-body">
+            <span>Name:</span>
             <h5 class="card-title">
               <router-link :to="{  name: 'service', params: { projectId: id, serviceId: service.id } }">
                 <input v-model="service.name" class="displayclicktext" readonly>
@@ -39,6 +40,7 @@
             </h5>
             <hr>
             <p class="card-text">
+              <span>Description:</span>
               <textarea v-model="service.description" class="displaytext" readonly></textarea>
               <hr>
               <div style="text-align: center;">
