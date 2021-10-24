@@ -25,8 +25,12 @@ export const getProjectsMetaData = async () => {
 
 export const getProjectById = async (id) => {
   if (id) {
-    const res = await axios.get(buildRoute(`project/${id}`));
-    return res.data;
+    try {
+      const res = await axios.get(buildRoute(`project/${id}`));
+      return res.data;
+    } catch {
+      return undefined;
+    }
   }
   return {};
 };
@@ -46,16 +50,24 @@ export const deleteProject = async (id) => {
 //Notes
 
 export const getNotesByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/notes`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/notes`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getNote = async (projectId, noteId) => {
-  if(projectId && noteId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/notes/${noteId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && noteId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/notes/${noteId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -74,16 +86,24 @@ export const deleteNote = async (projectId, noteId) => {
 //Blog
 
 export const getBlogsByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/blogs`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/blogs`));
+    return res.data;  
+  } catch {
+    return undefined;
+  }
 };
 
 export const getBlog = async (projectId, blogId) => {
-  if(projectId && blogId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/blogs/${blogId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && blogId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/blogs/${blogId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -102,16 +122,24 @@ export const deleteBlog = async (projectId, blogId) => {
 //Video
 
 export const getVideosByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/videos`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/videos`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getVideo = async (projectId, videoId) => {
-  if(projectId && videoId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/videos/${videoId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && videoId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/videos/${videoId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -130,16 +158,24 @@ export const deleteVideo = async (projectId, videoId) => {
 //Diagrams
 
 export const getDiagramsByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/diagrams`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/diagrams`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getDiagram = async (projectId, diagramId) => {
-  if(projectId && diagramId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/diagrams/${diagramId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && diagramId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/diagrams/${diagramId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -158,16 +194,24 @@ export const deleteDiagram = async (projectId, diagramId) => {
 //GitRepo
 
 export const getGitReposByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/gitrepos`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/gitrepos`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getGitRepo = async (projectId, gitRepoId) => {
-  if(projectId && gitRepoId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/gitrepos/${gitRepoId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && gitRepoId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/gitrepos/${gitRepoId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -186,21 +230,33 @@ export const deleteGitRepo = async (projectId, gitRepoId) => {
 //Build
 
 export const getBuildMetaDatasByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/buildmetadatas`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/buildmetadatas`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getBuildsForProject = async (projectId, buildId) => {
-  const res = await axios.get(buildRoute(`project/${projectId}/${buildId}/builds`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${projectId}/${buildId}/builds`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getBuild = async (projectId, buildId) => {
-  if(projectId && buildId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/buildmetadatas/${buildId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && buildId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/buildmetadatas/${buildId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 
@@ -219,16 +275,24 @@ export const deleteBuild = async (projectId, buildId) => {
 //Service
 
 export const getServicesByProjectId = async (id) => {
-  const res = await axios.get(buildRoute(`project/${id}/services`));
-  return res.data;
+  try {
+    const res = await axios.get(buildRoute(`project/${id}/services`));
+    return res.data;
+  } catch {
+    return undefined;
+  }
 };
 
 export const getService = async (projectId, serviceId) => {
-  if(projectId && serviceId) {
-    const res = await axios.get(buildRoute(`project/${projectId}/services/${serviceId}`));
-    return res.data;
-  } else {
-    return { project_id: projectId };
+  try {
+    if(projectId && serviceId) {
+      const res = await axios.get(buildRoute(`project/${projectId}/services/${serviceId}`));
+      return res.data;
+    } else {
+      return { project_id: projectId };
+    }
+  } catch {
+    return undefined;
   }
 };
 

@@ -17,6 +17,7 @@ import SetBuilds from '../components/SetBuilds.vue';
 import ServiceList from '../components/ServiceList.vue';
 import SetService from '../components/SetService.vue';
 import Service from '../components/Service.vue';
+import PageNotFound from '../components/PageNotFound.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -189,6 +190,11 @@ const router = createRouter({
       component: Service,
       props: (route) => ({ projectId: route.params.projectId, serviceId: route.params.serviceId })
     },
+    { 
+      path: '/:catchAll(.*)', 
+      name: 'Not Found',
+      component: PageNotFound 
+    }
   ]
 });
 

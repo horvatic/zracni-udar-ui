@@ -1,7 +1,11 @@
 <script>
   import { getBuildsForProject } from '../store/projectStore'
+  import PageNotFound from './PageNotFound.vue'
 
   export default {
+    components: {
+		  PageNotFound
+	  },
     props: {
       projectId: String,
       buildId: String
@@ -15,7 +19,10 @@
 </script>
 
 <template>
-  <div class="container" style="font-size: large;">
+  <div v-if="builds === undefined">
+    <PageNotFound />
+  </div>
+  <div v-else class="container" style="font-size: large;">
     <br>
     <h1 style="text-align: center;">Builds</h1>
     <br>

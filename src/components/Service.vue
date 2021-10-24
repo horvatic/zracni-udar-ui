@@ -1,10 +1,12 @@
 <script>
   import { deleteService, getService } from '../store/projectStore'
   import ServiceHealth from './ServiceHealth.vue'
+  import PageNotFound from './PageNotFound.vue'
 
   export default {
     components: {
-		  ServiceHealth
+		  ServiceHealth,
+      PageNotFound
 	  },
     props: {
       projectId: String,
@@ -25,8 +27,10 @@
 </script>
 
 <template>
-
-  <div class="container">
+  <div v-if="service === undefined">
+    <PageNotFound />
+  </div>
+  <div v-else class="container">
     <div style="text-align: center; font-size: large;">
       <input v-model="service.name" class="displayheader" readonly>
       <hr class="hrsoild">
