@@ -1,7 +1,11 @@
 <script>
   import { getVideosByProjectId, deleteVideo } from '../store/projectStore'
+  import PageNotFound from './PageNotFound.vue'
 
   export default {
+    components: {
+		  PageNotFound
+	  },
     props: {
       id: String
     },
@@ -24,7 +28,10 @@
 </script>
 
 <template>
-  <div class="container" style="font-size: large;">
+  <div v-if="videos === undefined">
+    <PageNotFound />
+  </div>
+  <div v-else class="container" style="font-size: large;">
     <br>
     <h1 style="text-align: center;">Videos</h1>
     <br>

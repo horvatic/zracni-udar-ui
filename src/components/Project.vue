@@ -1,7 +1,11 @@
 <script>
   import { getProjectById, deleteProject } from '../store/projectStore'
+  import PageNotFound from './PageNotFound.vue'
 
   export default {
+    components: {
+		  PageNotFound
+	  },
     props: {
       id: String
     },
@@ -20,7 +24,10 @@
 </script>
 
 <template>
-  <div class="container">
+  <div v-if="project === undefined">
+    <PageNotFound />
+  </div>
+  <div v-else class="container">
     <div style="text-align: center; font-size: large;">
       <input v-model=" project.name " class="displayheader" readonly>
       <textarea v-model="project.description" class="displaytext" readonly></textarea>
