@@ -17,3 +17,5 @@ spec:
         ports:
           - containerPort: 80
             name: "zusui-http"
+      nodeSelector:
+        architecture: arm64
