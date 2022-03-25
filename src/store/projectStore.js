@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { getProjectServerHost, getNamespace } from '../config/projectConfig';
-const isLocal = import.meta.env.VITE_LOCAL;
+import { getProjectServerHost } from '../config/projectConfig';
 
 export const healthCheckStatus = {
   HEALTHY : 'healthy',
@@ -9,11 +8,7 @@ export const healthCheckStatus = {
 };
 
 function buildRoute(baseRoute) {
-  if(isLocal) {
-    return `http://${getProjectServerHost()}/${baseRoute}`;
-  }
-  return `http://${getProjectServerHost()}/${getNamespace()}/zus/${baseRoute}`;
-  
+  return `${getProjectServerHost()}/${baseRoute}`;  
 }
 
 //Project Meta Data
