@@ -1,7 +1,11 @@
 <script>
   import { getService, setService } from '../store/projectStore'
+  import ApiKey from './ApiKey.vue'
 
   export default {
+    components: {
+      ApiKey
+	  },
     props: {
       projectId: String,
       serviceId: String
@@ -26,7 +30,10 @@
 </script>
 
 <template>
-  <div class="container-fluid" style="font-size: large;">
+  <div v-if="service === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container-fluid" style="font-size: large;">
     <div style="text-align: center;">
       <br>
       <p>Name</p>

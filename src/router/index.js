@@ -18,6 +18,7 @@ import ServiceList from '../components/ServiceList.vue';
 import SetService from '../components/SetService.vue';
 import Service from '../components/Service.vue';
 import PageNotFound from '../components/PageNotFound.vue';
+import ApiKey from '../components/ApiKey.vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -33,6 +34,11 @@ const router = createRouter({
       name: 'projects', 
       path: buildPath(''), 
       component: ProjectsList 
+    },
+    {
+      name: 'apikey',
+      path: buildPath('apikey'),
+      component: ApiKey
     },
     {
       name: 'project', 

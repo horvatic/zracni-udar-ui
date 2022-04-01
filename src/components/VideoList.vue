@@ -1,10 +1,12 @@
 <script>
   import { getVideosByProjectId, deleteVideo } from '../store/projectStore'
   import PageNotFound from './PageNotFound.vue'
+  import ApiKey from './ApiKey.vue'
 
   export default {
     components: {
-		  PageNotFound
+		  PageNotFound,
+      ApiKey
 	  },
     props: {
       id: String
@@ -30,6 +32,9 @@
 <template>
   <div v-if="videos === undefined">
     <PageNotFound />
+  </div>
+  <div v-else-if="videos === 'noauth'">
+    <ApiKey />
   </div>
   <div v-else class="container" style="font-size: large;">
     <br>

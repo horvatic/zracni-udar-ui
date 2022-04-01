@@ -1,7 +1,11 @@
 <script>
   import { getBlog, setBlog } from '../store/projectStore'
+  import ApiKey from './ApiKey.vue'
 
   export default {
+    components: {
+      ApiKey
+	  },
     props: {
       projectId: String,
       blogId: String
@@ -25,7 +29,10 @@
 </script>
 
 <template>
-  <div class="container-fluid" style="font-size: large;">
+  <div v-if="blog === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container-fluid" style="font-size: large;">
     <div style="text-align: center;">
       <br>
       <p>Name</p>
