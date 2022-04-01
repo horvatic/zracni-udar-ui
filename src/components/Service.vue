@@ -2,11 +2,13 @@
   import { deleteService, getService } from '../store/projectStore'
   import ServiceHealth from './ServiceHealth.vue'
   import PageNotFound from './PageNotFound.vue'
+  import ApiKey from './ApiKey.vue'
 
   export default {
     components: {
 		  ServiceHealth,
-      PageNotFound
+      PageNotFound,
+      ApiKey
 	  },
     props: {
       projectId: String,
@@ -29,6 +31,9 @@
 <template>
   <div v-if="service === undefined">
     <PageNotFound />
+  </div>
+  <div v-else-if="service === 'noauth'">
+    <ApiKey />
   </div>
   <div v-else class="container">
     <div style="text-align: center; font-size: large;">

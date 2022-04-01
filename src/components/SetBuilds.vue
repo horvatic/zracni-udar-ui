@@ -1,7 +1,11 @@
 <script>
   import { getBuild, setBuild } from '../store/projectStore'
+  import ApiKey from './ApiKey.vue'
 
   export default {
+    components: {
+      ApiKey
+	  },
     props: {
       projectId: String,
       buildId: String
@@ -27,7 +31,10 @@
 </script>
 
 <template>
-  <div class="container-fluid" style="font-size: large;">
+  <div v-if="build === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container-fluid" style="font-size: large;">
     <div style="text-align: center;">
       <br>
       <p>Name</p>

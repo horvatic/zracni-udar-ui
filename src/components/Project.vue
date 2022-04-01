@@ -1,10 +1,12 @@
 <script>
   import { getProjectById, deleteProject } from '../store/projectStore'
   import PageNotFound from './PageNotFound.vue'
+  import ApiKey from './ApiKey.vue'
 
   export default {
     components: {
-		  PageNotFound
+		  PageNotFound,
+      ApiKey
 	  },
     props: {
       id: String
@@ -26,6 +28,9 @@
 <template>
   <div v-if="project === undefined">
     <PageNotFound />
+  </div>
+  <div v-else-if="project === 'noauth'">
+    <ApiKey />
   </div>
   <div v-else class="container">
     <div style="text-align: center; font-size: large;">

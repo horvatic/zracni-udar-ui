@@ -1,7 +1,11 @@
 <script>
   import { getProjectById, setProjectMetaData } from '../store/projectStore'
+  import ApiKey from './ApiKey.vue'
 
   export default {
+    components: {
+      ApiKey
+	  },
     props: {
       id: String
     },
@@ -23,7 +27,10 @@
 </script>
 
 <template>
-  <div class="container-fluid" style="font-size: large;">
+  <div v-if="project === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container-fluid" style="font-size: large;">
     <div style="text-align: center;">
       <br>
       <p>Project Name</p>

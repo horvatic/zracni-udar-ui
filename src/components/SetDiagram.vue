@@ -1,7 +1,11 @@
 <script>
   import { getDiagram, setDiagram } from '../store/projectStore'
+  import ApiKey from './ApiKey.vue'
 
   export default {
+    components: {
+      ApiKey
+	  },
     props: {
       projectId: String,
       diagramId: String
@@ -25,7 +29,10 @@
 </script>
 
 <template>
-  <div class="container-fluid" style="font-size: large;">
+  <div v-if="diagram === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container-fluid" style="font-size: large;">
     <div style="text-align: center;">
       <br>
       <p>Name</p>

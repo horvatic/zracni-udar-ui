@@ -1,7 +1,11 @@
 <script>
+import ApiKey from './ApiKey.vue'
 import { getProjectsMetaData } from '../store/projectStore'
 
 export default {
+  components: {
+    ApiKey
+  },
   async setup() {
     return {
      projects: await getProjectsMetaData()
@@ -10,8 +14,11 @@ export default {
 }
 </script>
 
-<template>
-  <div class="container">
+<template>  
+  <div v-if="projects === 'noauth'">
+    <ApiKey />
+  </div>
+  <div v-else class="container">
     <br>
     <h1 style="text-align: center;">Projects</h1>
     <br>
